@@ -1,21 +1,16 @@
-body {
-    overflow: hidden;
-}
+
 
 p {
     color:#f6f6f8;
 }
 
-#content {
+body {
     background-color:#1c1c1c;
-    width:100vw;
-    height:100vh;
-    position:absolute;
+
     display: grid;
     grid-template-columns: 50% 50%;
-    grid-template-rows: 50% 50%;
-    left:0;
-    top:0;
+    grid-template-rows: auto auto;
+
 
 }
 
@@ -41,4 +36,31 @@ p {
     border:#27e9dc 3px solid;
     margin:5px;
     padding:5px;
+}
+
+@media screen and (max-width: 767px) {
+
+    #internetContent {
+        grid-row: 1 / 1;
+        grid-column: 1 / 1;
+        border:#27e97e 3px solid;
+        margin:5px;
+        padding:5px;
+    }
+
+    #locationContent {
+        grid-row: 2 / 2;
+        grid-column: 1 / 1;
+        border:#e42323 3px solid;
+        margin:5px;
+        padding:5px;
+    }
+
+    #deviceContent {
+        grid-column: 1 / 1;
+        grid-row: 3 / 3; 
+        border:#27e9dc 3px solid;
+        margin:5px;
+        padding:5px;
+    }
 }

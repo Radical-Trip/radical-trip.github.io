@@ -21,18 +21,19 @@ screensizeelem = document.getElementById("screensize");
 
 async function getData(){
     //get ISP/and more info
-    const response = await fetch("https://ipapi.co/json/");
+    const response = await fetch("http://ip-api.com/json/");
     const data = await response.json();
 
     console.log(data.status);
-    ipelem.innerHTML = `IP: ${data.ip}`;
-    document.getElementById('yourISP').innerHTML = `ISP: ${data.org}`;
+    ipelem.innerHTML = `IP: ${data.query}`;
+    document.getElementById('yourISP').innerHTML = `ISP: ${data.isp}`;
+    document.getElementById('yourISPORG').innerHTML = `ISP Orginization: ${data.org}`;
     document.getElementById('Timezone').innerHTML = `Timezone: ${data.timezone}`;
-    document.getElementById('country').innerHTML = `Country: ${data.country_code} - ${data.country_name}`;
-    document.getElementById('region').innerHTML = `Region: ${data.region_code} - ${data.region}`;
+    document.getElementById('country').innerHTML = `Country: ${data.countryCode} - ${data.country}`;
+    document.getElementById('region').innerHTML = `Region: ${data.region} - ${data.regionName}`;
     document.getElementById('city').innerHTML = `City: ${data.city}`;
-    document.getElementById('zip').innerHTML = `Zip Code: ${data.postal}`;
-    document.getElementById('yourLoc').innerHTML = "Latitude: " + data.latitude + "<br>Longitude: " + data.longitude;
+    document.getElementById('zip').innerHTML = `Zip Code: ${data.zip}`;
+    document.getElementById('yourLoc').innerHTML = "Latitude: " + data.lat + "<br>Longitude: " + data.lon;
 
     //get gpu
     const canvas = document.createElement('canvas');
