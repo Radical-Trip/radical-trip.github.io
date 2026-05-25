@@ -249,7 +249,7 @@ async function getData(){
     switch (os) {
         case 'Mac OS':
         case 'Mac OS X':
-        case 'Android':d
+        case 'Android':
             osVersion = /(?:Android|Mac OS|Mac OS X|MacPPC|MacIntel|Mac_PowerPC|Macintosh) ([\.\_\d]+)/.exec(nAgt)[1];
             break;
 
