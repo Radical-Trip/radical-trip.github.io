@@ -21,9 +21,10 @@ screensizeelem = document.getElementById("screensize");
 
 async function getData(){
     //get ISP/and more info
-    const response = await fetch('https://ip-api.com/json');
+    const response = await fetch("http://ip-api.com/json/");
     const data = await response.json();
 
+    console.log(data.status);
     ipelem.innerHTML = `IP: ${data.query}`;
     document.getElementById('yourISP').innerHTML = `ISP: ${data.isp}`;
     document.getElementById('yourISPORG').innerHTML = `ISP Orginization: ${data.org}`;
