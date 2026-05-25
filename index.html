@@ -4,24 +4,39 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <p id="yourip"></p>
-    <p id="yourloc"></p>
-    <p id="yourgpu"></p>
-    <p id="yourcpu"></p>
-    <p id="youros"></p>
-    <p id="yourosver"></p>
-    <p id="yourbrowser"></p>
-    <p id="yourbrowserver"></p>
-    <p id="browserMajorVersion"></p>
-    <p id="cookiesEnabled?"></p>
-    <p id="ismobile"></p>
-    <p id="screensize"></p>
 
-    <button id="finddatabtn">Get Data</button>
+    
+    <div id="content">
+        <div id="internetContent">
+            <p id="yourip"></p>
+            <p id="yourISP"></p>
+            <p id="yourISPORG"></p>
+        </div>
 
+        <div id="locationContent">
+            <p id="Timezone"></p>
+            <p id="country"></p>
+            <p id="region"></p>
+            <p id="city"></p>
+            <p id="zip"></p>
+            <p id="yourLoc"></p>
+        </div>
+
+        <div id="deviceContent">
+            <p id="yourgpu"></p>
+            <p id="youros"></p>
+            <p id="yourosver"></p>
+            <p id="yourbrowser"></p>
+            <p id="yourbrowserver"></p>
+            <p id="browserMajorVersion"></p>
+            <p id="cookiesEnabled?"></p>
+            <p id="ismobile"></p>
+            <p id="screensize"></p>
+        </div>    
+    </div>
     <script src="data-example.js"></script>
 </body>
 </html>

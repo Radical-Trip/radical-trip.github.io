@@ -1,7 +1,6 @@
 ipelem = document.getElementById("yourip");
 locelem = document.getElementById("yourloc");
 gpuelem = document.getElementById("yourgpu");
-cpuelem = document.getElementById("yourcpu");
 oselem = document.getElementById("youros");
 osverelem = document.getElementById("yourosver");
 browserelem = document.getElementById("yourbrowser");
@@ -11,74 +10,29 @@ cookiesenabledelem = document.getElementById("cookiesEnabled?");
 ismobileelem = document.getElementById("ismobile");
 screensizeelem = document.getElementById("screensize");
 
-function success(position) {
-  locelem.innerHTML = "Latitude: " + position.coords.latitude +
-  "<br>Longitude: " + position.coords.longitude;
-}
+//cpu core count navigator.hardwareConcurrency
+//ram estimate navigator.deviceMemory
+//battery level navigator.getBattery()
+//is touchscreen navigator.maxTouchPoints
+//time zone Intl.DateTimeFormat().resolvedOptions().timeZone
+//connection type navigator.connection
+//Lists browser plugins navigator.plugins
 
-function error(err) {
-
-  switch(err.code) {
-    case err.PERMISSION_DENIED:
-      locelem.innerHTML = "Location denied by user";
-      break;
-    case err.POSITION_UNAVAILABLE:
-      locelem.innerHTML = "Location unavailable";
-      break;
-    case err.TIMEOUT:
-      locelem.innerHTML = "Location request timed out";
-      break;
-    default:
-      locelem.innerHTML = "Unknown error: " + err.message;
-  }
-}
-
-function getLocation(retries=3){
-    const geoOptions = {
-        enableHighAccuracy: false, 
-        timeout: 10000,            
-        maximumAge: 60000          
-    };
-
-    if (!navigator.geolocation){
-        locelem.innerHTML = "Geolocation not supported";
-        return;
-    }
-
-    navigator.geolocation.getCurrentPosition(success, 
-        (err)=>{
-            if (retries > 0 && err.code === err.POSITION_UNAVAILABLE){
-                locelem.innerHTML = `Position Unavailable, Retries Left: ${retries}`
-                setTimeout(()=> getLocation(retries-1), 2000);
-            }else{
-                switch(err.code) {
-                    case err.PERMISSION_DENIED:
-                    locelem.innerHTML = "Location denied by user";
-                    break;
-                    case err.POSITION_UNAVAILABLE:
-                    locelem.innerHTML = "Location unavailable";
-                    break;
-                    case err.TIMEOUT:
-                    locelem.innerHTML = "Location request timed out";
-                    break;
-                    default:
-                    locelem.innerHTML = "Unknown error: " + err.message;
-                }
-            }
-        },
-        geoOptions);
-}
 
 async function getData(){
-    //getip
-    const response = await fetch('https://api.ipify.org?format=json');
+    //get ISP/and more info
+    const response = await fetch('http://ip-api.com/json');
     const data = await response.json();
-    ipelem.innerHTML = `IP: ${data.ip}`;
 
-    //get loc
-    
-
-    getLocation();
+    ipelem.innerHTML = `IP: ${data.query}`;
+    document.getElementById('yourISP').innerHTML = `ISP: ${data.isp}`;
+    document.getElementById('yourISPORG').innerHTML = `ISP Orginization: ${data.org}`;
+    document.getElementById('Timezone').innerHTML = `Timezone: ${data.timezone}`;
+    document.getElementById('country').innerHTML = `Country: ${data.countryCode} - ${data.country}`;
+    document.getElementById('region').innerHTML = `Region: ${data.region} - ${data.regionName}`;
+    document.getElementById('city').innerHTML = `City: ${data.city}`;
+    document.getElementById('zip').innerHTML = `Zip Code: ${data.zip}`;
+    document.getElementById('yourLoc').innerHTML = "Latitude: " + data.lat + "<br>Longitude: " + data.lon;
 
     //get gpu
     const canvas = document.createElement('canvas');
